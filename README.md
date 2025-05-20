@@ -19,3 +19,5 @@ npm i -D nodemon
 </p>
 
 for the love of god stop using commonjs and switch to module 
+
+store files in cloudinary 
