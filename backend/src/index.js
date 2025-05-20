@@ -1,22 +1,29 @@
 import express from 'express'
 import dotenv from 'dotenv'
+
 import userRoutes from "./routes/user.route.js"
-import cors from 'cors'
+import adminRoutes from "./routes/admin.route.js"
+import authRoutes from './routes/auth.route.js'
+import albumRoutes from './routes/album.route.js'
+import songRoutes from './routes/song.route.js'
+import statsRoutes from './routes/stats.route.js'
+import { connectDB } from './lib/db.js'
 
 dotenv.config()
 
 const app = express()
-app.use(cors())
 app.use(express.json())
 
 const PORT = process.env.PORT;
 
-app.use("/api/users", userRoutes)
-
-app.get('/', (req, res) => {
-    res.send('Backend is running');
-});
+app.use("/api/users", userRoutes) 
+app.use("/api/admin", adminRoutes) 
+app.use("/api/auth", authRoutes) 
+app.use("/api/songs", songRoutes) 
+app.use("/api/albums", albumRoutes) 
+app.use("/api/stats", statsRoutes) 
   
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
+    connectDB()
 })
