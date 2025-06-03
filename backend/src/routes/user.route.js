@@ -1,10 +1,12 @@
 import { Router } from 'express'
+import { protectRoute } from '../middleware/auth.middleware.js'
+import { getAllUsers } from '../controller/user.controller.js'
 
 const router = Router()
 
-router.get('/', (req, res) => {
-    req.auth.userId
-    res.send("User route with GET method")
-})
+//middleware for seeing the other users
+router.get('/', protectRoute, getAllUsers)
+
+// TODO: maybe add a messaging optoin between users in the future
 
 export default router

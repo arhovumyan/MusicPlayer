@@ -78,4 +78,4 @@ export const getTrendingSongs = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
- }
+}
